@@ -1,10 +1,8 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { IoReorderThreeOutline } from "react-icons/io5";
-import { BsBell } from "react-icons/bs";
-import { FiEdit } from "react-icons/fi";
 import { BiSearch } from "react-icons/bi";
 import { HiChevronDown } from "react-icons/hi";
+import MainLayout from "../components/MainLayout";
 
 const Home: NextPage = () => {
   return (
@@ -12,29 +10,8 @@ const Home: NextPage = () => {
       <Head>
         <title>T3Stack Blog Site</title>
       </Head>
-      <div className="flex h-full w-full flex-col">
-        <header className="flex h-32   w-full flex-row items-center justify-around border-b-[1px] border-gray-300 bg-white ">
-          <div>
-            <IoReorderThreeOutline className="text-2xl text-gray-600" />
-          </div>
-          <div className="text-xl font-thin">Ultimate Blog app</div>
-          <div className="flex items-center space-x-4">
-            <div>
-              <BsBell className="text-2xl text-gray-600" />
-            </div>
-            <div>
-              <div className="h-5 w-5 rounded-full bg-gray-600" />
-            </div>
-            <div>
-              <button className="flex items-center space-x-3 rounded border border-gray-200 px-4 py-2 hover:border-gray-900 hover:text-gray-900">
-                <div>Write</div>
-                <div>
-                  <FiEdit className="text-2xl text-gray-600 " />
-                </div>
-              </button>
-            </div>
-          </div>
-        </header>
+
+      <MainLayout>
         <section className="grid h-full w-full grid-cols-12 place-items-center">
           <main className="col-span-8 h-full w-full border-r border-gray-300  px-24 ">
             <div className="flex w-full flex-col space-y-4 py-10">
@@ -169,18 +146,20 @@ const Home: NextPage = () => {
             <h3 className="my-6 text-lg font-semibold">Your reading list</h3>
             <div className="flex flex-col space-y-8 ">
               {Array.from({ length: 4 }).map((_, i) => (
-                <div key={i} className="flex items-center space-x-6 group">
-                  <div className="h-full w-2/5 aspect-square rounded-xl bg-gray-300"></div>
+                <div key={i} className="group flex items-center space-x-6">
+                  <div className="aspect-square h-full w-2/5 rounded-xl bg-gray-300"></div>
                   <div className="flex w-3/5 flex-col space-y-2">
-                    <h3 className="text-lg font-semibold group-hover:underline decoration-indigo-600">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 className="text-lg font-semibold decoration-indigo-600 group-hover:underline">
+                      Lorem ipsum dolor sit amet consectetur.
+                    </h3>
                     <div>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Libero, similique?
                     </div>
-                    <div className="flex space-x-4 items-center w-full ">
-                     <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
-                     <div>Chizaa &#x2022; </div>
-                     <div>Dec 22 2022</div>
+                    <div className="flex w-full items-center space-x-4 ">
+                      <div className="h-8 w-8 rounded-full bg-gray-300"></div>
+                      <div>Chizaa &#x2022; </div>
+                      <div>Dec 22 2022</div>
                     </div>
                   </div>
                 </div>
@@ -188,7 +167,7 @@ const Home: NextPage = () => {
             </div>
           </aside>
         </section>
-      </div>
+      </MainLayout>
     </>
   );
 };
