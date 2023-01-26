@@ -1,10 +1,16 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+import { useContext } from "react";
 import { BiSearch } from "react-icons/bi";
 import { HiChevronDown } from "react-icons/hi";
 import MainLayout from "../components/MainLayout";
+import Modal from "../components/Modal";
+import { GlobalContext } from "../contexts/GlobalContextProvider";
 
 const Home: NextPage = () => {
+
+  const { isWriteModalOpen, setIsWriteModalOpen} = useContext(GlobalContext)
+
   return (
     <>
       <Head>
@@ -167,6 +173,11 @@ const Home: NextPage = () => {
             </div>
           </aside>
         </section>
+        <Modal isOpen={isWriteModalOpen} onClose={() => setIsWriteModalOpen(false)}>
+          <form onSubmit={(e) => e.preventDefault()}>
+            Here is the form
+          </form>
+        </Modal>
       </MainLayout>
     </>
   );
